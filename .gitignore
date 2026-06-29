@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+
+saved_model/
+
+.vscode/
+
+.env
+
+.pytest_cache/
+
+.coverage
