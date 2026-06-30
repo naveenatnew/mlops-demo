@@ -34,6 +34,9 @@ predictions = model.predict(X_test)
 # Evaluate model
 accuracy = accuracy_score(y_test, predictions)
 
+if accuracy < 0.90:
+    raise Exception("Model accuracy below acceptable threshold.")
+
 print(f"Model Accuracy: {accuracy:.2f}")
 
 # Create output folder if it doesn't exist
