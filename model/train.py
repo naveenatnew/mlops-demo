@@ -2,8 +2,12 @@ from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
+from pathlib import Path
 import joblib
-import os
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_DIR = BASE_DIR / "saved_model"
+MODEL_DIR.mkdir(exist_ok=True)
 
 # Load dataset
 iris = load_iris()
@@ -39,10 +43,7 @@ if accuracy < 0.90:
 
 print(f"Model Accuracy: {accuracy:.2f}")
 
-# Create output folder if it doesn't exist
-os.makedirs("saved_model", exist_ok=True)
-
 # Save model
-joblib.dump(model, "saved_model/model.pkl")
+joblib.dump(model, MODEL_DIR / "model.pkl")
 
 print("Model saved successfully.")

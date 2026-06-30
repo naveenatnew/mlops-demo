@@ -26,10 +26,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run Unit Tests
-      run: |
-        pytest
-
     - name: Check Code Formatting
       run: |
         black --check .
@@ -37,10 +33,14 @@ jobs:
     - name: Run Linter
       run: |
         flake8 .
-
+        
     - name: Train Model
       run: |
         python model/train.py
+
+    - name: Run Unit Tests
+      run: |
+        pytest
 
     - name: Upload Model Artifact
       uses: actions/upload-artifact@v4

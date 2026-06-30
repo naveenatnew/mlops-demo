@@ -1,10 +1,13 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from pathlib import Path
 import joblib
 
 app = FastAPI()
 
-model = joblib.load("saved_model/model.pkl")
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_PATH = BASE_DIR / "saved_model" / "model.pkl"
+model = joblib.load(MODEL_PATH)
 
 class IrisRequest(BaseModel):
     sepal_length: float
