@@ -33,7 +33,7 @@ jobs:
     - name: Run Linter
       run: |
         flake8 .
-        
+
     - name: Train Model
       run: |
         python model/train.py
@@ -47,7 +47,3 @@ jobs:
       with:
         name: trained-model
         path: saved_model/model.pkl
-
-    - name: Build Docker Image
-      run: |
-        docker build -t mlops-api:${{ github.sha }} .
